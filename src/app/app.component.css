@@ -1,0 +1,29 @@
+.toolbar {
+  float: none;
+  padding-left: 15%;
+  padding-right: 15%;
+  background-color: white;
+  top: 0;
+  z-index: 1000;
+  position: sticky;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.41);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.41);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.41);
+}
+
+.toolbar-logo{
+  float: left;
+}
+
+.toolbar-account{
+  float: right;
+}
+
+.toolbar-inner-wrapper {
+  width: 100%;
+}
+
+.post-wrapper {
+  padding-left: 5%;
+  padding-top: 15px;
+}

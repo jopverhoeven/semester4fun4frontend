@@ -1,0 +1,116 @@
+<div *ngIf="!doneLoading"></div>
+
+<div *ngIf="doneLoading" class="post-wrapper">
+
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5px" style="margin-top: 20px;">
+    <div fxFlex></div>
+    <mat-card fxFlex="45%">
+      <mat-card-header [routerLink]="['/profile/'+post.postUser.username]" routerLinkActive="router-link-active">
+        <img mat-card-avatar src="{{post.postUser.profilePicture}}">
+        <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
+        <mat-card-subtitle>@{{post.postUser.username}} | gepost op {{post.postDate | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        {{post.postDescription}}
+      </mat-card-content>
+
+      <img class="post-image" mat-card-image src="{{post.imageContent}}">
+
+      <mat-card-content>
+        <span [class.liked]="userLiked">{{post.likes.length}} vind ik leuks</span> | {{post.comments.length}} reacties
+      </mat-card-content>
+
+
+      <mat-card-actions>
+        <button mat-button (click)="likePost()">
+          Vind ik leuk
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex="25%" gdAreas="side content">
+      <mat-card-content>
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput type="text" formControlName="comment" placeholder="Laat een comment achter." required>
+            <mat-error *ngIf="comment.invalid">Vul een comment in.</mat-error>
+          </mat-form-field>
+          <button mat-button type="submit" [disabled]="!commentForm.valid">Plaatsen</button>
+        </form>
+      </mat-card-content>
+      <br>
+      <mat-card-content>
+        <div *ngIf="post.comments.length === 0">
+          <p>Er zijn nog geen reacties op deze post. Ben de eerste die een reactie achterlaat!</p>
+        </div>
+        <div class="comment-box" *ngIf="post.comments.length !== 0">
+          <mat-card class="comment" *ngFor="let comment of post.comments">
+            <mat-card-header [routerLink]="['/profile/'+comment.commentUser.username]"
+              routerLinkActive="router-link-active">
+              <img mat-card-avatar src="{{comment.commentUser.profilePicture}}">
+              <mat-card-title>{{comment.commentUser.firstname}} {{comment.commentUser.lastname}}</mat-card-title>
+              <mat-card-subtitle>@{{comment.commentUser.username}} | gereageerd op
+                {{comment.commentDate | date:'short'}}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              {{comment.commentContent}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div fxFlex></div>
+  </div>
+</div>
+
+
+<!--
+  <div class="title-wrapper">
+    <div class="user-icon">
+      <img class="user-icon-image" src="../../assets/1024px-Circle-icons-profile.svg.png">
+    </div>
+    <div class="title-other-wrapper">
+      <div class="user-name" [routerLink]="['/profile/'+post.postUser.username]" routerLinkActive="router-link-active" >{{post.postUser.firstname}} {{post.postUser.lastname}}</div>
+      <div class="posted-on">{{post.postDate | date:'short'}}</div>
+    </div>
+  </div>
+  <div class="body-wrapper">
+    <div class="image-wrapper">
+      <img class="image" src="{{post.imageContent}}">
+    </div>
+    <div class="likes-wrapper">
+      {{post.likes}} <i class="material-icons">thumb_up</i>
+    </div>
+  </div>
+  <div class="comment-wrapper">
+    <div class="leave-comment-wrapper">
+      <mat-form-field>
+        <input matInput placeholder="Laat een reactie achter..." />
+      </mat-form-field>
+      <button mat-raised-button>Plaatsen</button>
+
+    </div>
+    <div class="post-comments-wrapper">
+      <div *ngIf="post.comments == undefined">
+        <p>Laat een reactie achter!</p>
+      </div>
+      <div *ngIf="post.comments">
+        <div *ngFor="let comment of post.comments">
+          <div class="post-comment">
+            <div class="comment-user-icon-wrapper">
+                <img class="comment-user-icon" src="../../assets/1024px-Circle-icons-profile.svg.png">
+              </div>
+            <div class="comment-user-name">
+              {{comment.commentUser.firstname}} {{comment.commentUser.lastname}}
+            </div>
+            <div class="comment-content">
+              {{comment.commentContent}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <mat-card>
+    <mat-card-header [routerLink]="['/profile/'+post.postUser.username]" routerLinkActive="router-link-active">
+        <img mat-card-avatar src="{{post.postUser.profilePicture}}">
+        <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
+        <mat-card-subtitle>@{{post.postUser.username}} | gepost op {{post.postDate | date:'short'}}</mat-card-subtitle>
+    </mat-card-header>
+    <div style="margin-top: 10px;" [routerLink]="['/post/'+post.postId]" routerLinkActive="router-link-active" >
+      <mat-card-content>
+        {{post.postDescription}}
+      </mat-card-content>
+      <img mat-card-image src="{{post.imageContent}}">
+      <mat-card-content>
+        <p><span [class.liked]="userLiked">{{post.likes.length}} vind ik leuks</span> | {{post.comments.length}} reactie(s)</p>
+      </mat-card-content>
+    </div>
+    <mat-card-actions>
+      <button mat-button (click)="likePost()">Vind ik leuk</button>
+      <button mat-button [routerLink]="['/post/'+post.postId]" routerLinkActive="router-link-active">Reageren</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+
+  <!-- <div class="title-wrapper">
+    <div class="user-wrapper">
+      <div class="user-icon">
+        <i class="material-icons">account_circle</i>
+      </div>
+      <div class="user-name">{{post.postUser.firstname}} {{post.postUser.lastname}}</div>
+    </div>
+    <div class="posted-on">Gepost op {{post.postDate | date:'short'}}</div>
+  </div>
+
+  <div class="body-wrapper">
+    <div class="image-wrapper">
+      <img class="image" src="{{post.imageContent}}" />
+    </div>
+    <div class="image-data-wrapper">
+      <div class="likes">{{post.likes}} <i class="material-icons">thumb_up</i></div>
+    </div>
+  </div>
+
+  <div class="comment-wrapper">
+    <div class="all-comments"><a routerLink="/home">{{post.comments.length}} comments...</a></div>
+  </div>
+
+  <!-- <div class="scroll-wrapper">
+    <app-scroll></app-scroll>
+  </div> -->

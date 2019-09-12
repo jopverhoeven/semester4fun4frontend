@@ -1,0 +1,30 @@
+<div *ngIf="!doneLoading"></div>
+<div *ngIf="doneLoading">
+  <div class="header">
+    <div class="header-wrapper">
+      <div class="profile-image-wrapper">
+        <img class="profile-image" src="{{profile.profileUser.profilePicture}}">
+      </div>
+      <div class="profile-data">
+        <p class="profile-name">{{profile.profileUser.firstname}} {{profile.profileUser.lastname}}</p>
+        <p class="profile-username">@{{profile.profileUser.username}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-list">
+    <div class="post-wrapper" *ngFor="let post of profile.profilePosts">
+      <mat-card class="post">
+        <mat-card-header>
+          <img mat-card-avatar src="{{post.postUser.profilePicture}}">
+          <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
+          <mat-card-subtitle>Gepost op {{post.postDate|date:'short'}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img class="post-image" mat-card-image src="{{post.imageContent}}">
+    </mat-card>
+  </div>
+</div>
+
+
+</div>

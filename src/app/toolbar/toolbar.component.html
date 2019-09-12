@@ -1,0 +1,33 @@
+<mat-toolbar class="toolbar">
+  <div class="toolbar-inner-wrapper">
+
+    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="toolbar-logo">
+      <h1>FonstaGram</h1>
+    </span>
+
+    <span class="toolbar-account" *ngIf="doneLoading">
+      <div *ngIf="user == null">
+        <button mat-button>Registreren</button>
+        <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Inloggen</button>
+      </div>
+      <div *ngIf="user != null">
+        <img mat-card-avatar src="{{user.profilePicture}}" />
+        <button mat-button [routerLink]="['/profile/'+user.username]"
+          routerLinkActive="router-link-active">{{user.firstname}} {{user.lastname}}</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu"><i class="material-icons">more_horiz</i></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/profile/'+user.username]" routerLinkActive="router-link-active" >
+            Profiel
+          </button>
+          <button mat-menu-item>
+              <i class="material-icons">settings_applications</i> Instellingen
+          </button>
+          <button mat-menu-item (click)="logOut()">
+              <i class="material-icons">exit_to_app</i> Uitloggen
+          </button>
+        </mat-menu>
+      </div>
+    </span>
+  </div>
+
+</mat-toolbar>

@@ -1,0 +1,89 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+
+.title-wrapper {
+  min-width: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.body-wrapper {
+  min-width: 100%;
+  width: 100%;
+}
+
+.image-wrapper{
+  min-width: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.image {
+  height: auto;
+  max-height: 800px;
+  max-width: 600px;
+  min-width: 600px;
+}
+
+.image-data-wrapper {
+  padding: 4px 0px 7px 10px;
+}
+
+.user-wrapper {
+  width: 100%;
+}
+
+.user-icon {
+  float: left;
+}
+
+.user-name {
+  float: left;
+}
+
+.posted-on {
+  clear:left;
+  font-size: 12px;
+}
+
+.comment-wrapper {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+/*
+.top-comment-wrapper {
+
+}
+
+.top-comment-user-wrapper{
+
+} */
+
+.top-comment-user-icon{
+  float: left;
+}
+
+.top-comment-user-name{
+  float: left;
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.top-comment-text{
+  float: unset;
+}
+
+.all-comments{
+  margin-top: 10px;
+}
+
+.scroll-wrapper{
+  width: 100%;
+  text-align: right;
+}
+
+.liked {
+  color: red;
+  font-weight: bold;
+}
