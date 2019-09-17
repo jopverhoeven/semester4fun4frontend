@@ -12,6 +12,19 @@
     </div>
   </div>
 
+  <div class="post-list" fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="5px">
+    <mat-card *ngFor="let post of profile.profilePosts" fxFlex="0 1 calc(33.3% - 5px)">
+      <mat-card-header>
+        <img mat-card-avatar src="{{post.postUser.profilePicture}}">
+        <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
+        <mat-card-subtitle>Gepost op {{post.postDate | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{post.imageContent}}" style="object-fit: contain;">
+    </mat-card>
+  </div>
+
+
+<!--
   <div class="post-list">
     <div class="post-wrapper" *ngFor="let post of profile.profilePosts">
       <mat-card class="post">
@@ -22,9 +35,9 @@
         </mat-card-header>
 
         <img class="post-image" mat-card-image src="{{post.imageContent}}">
-    </mat-card>
-  </div>
-</div>
+      </mat-card>
+    </div>
+  </div> -->
 
 
 </div>
