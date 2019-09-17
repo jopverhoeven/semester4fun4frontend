@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './overview/home/home.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'post/:id', component: PostComponent},
   { path: 'profile/:id', component: ProfileComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: '404', component: NotFoundComponent},
   { path: '**', redirectTo: '/404'}
 ];

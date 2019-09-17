@@ -1,3 +1,5 @@
+import { RegisterSubmitModel } from './../../../models/authentication/RegisterSubmitModel';
+import { RegisterReturnModel } from './../../../models/authentication/RegisterReturnModel';
 import { AuthenticationReturnModel } from './../../../models/authentication/AuthenticationReturnModel';
 import { User } from './../../../models/User';
 import { AuthenticationSubmitModel } from './../../../models/authentication/AuthenticationSubmitModel';
@@ -38,7 +40,7 @@ export class AuthenticationService {
   async loginWithToken(token: string): Promise<User> {
     let user: User;
 
-    await this.httpClient.get<User>(`${this.dbContext.RestURL}auth/token/${token}`)
+    await this.httpClient.post<User>(`${this.dbContext.RestURL}auth/token`, token)
     .pipe(
       map((data: User) => user = data)
     ).pipe(
@@ -46,6 +48,27 @@ export class AuthenticationService {
     ).toPromise();
 
     return user;
+  }
+
+  // tslint:disable-next-line: max-line-length
+  async register(username: string, firstname: string, lastname: string, password: string, profileImage: string): Promise<RegisterReturnModel> {
+    const submitModel: RegisterSubmitModel = new RegisterSubmitModel;
+    submitModel.username = username;
+    submitModel.firstname = firstname;
+    submitModel.lastname = lastname;
+    submitModel.profilePicture = profileImage;
+    submitModel.password = password;
+
+    let returnModel;
+
+    await this.httpClient.post<RegisterReturnModel>(`${this.dbContext.RestURL}auth/register`, submitModel)
+    .pipe(
+      map((data: RegisterReturnModel) => returnModel = data)
+    ).pipe(
+      catchError(this.handleError)
+    ).toPromise();
+
+    return returnModel;
   }
 
   private handleError(error: HttpErrorResponse) {

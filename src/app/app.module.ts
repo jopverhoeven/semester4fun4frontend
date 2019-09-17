@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     NotFoundComponent,
     ToolbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FlexLayoutModule,

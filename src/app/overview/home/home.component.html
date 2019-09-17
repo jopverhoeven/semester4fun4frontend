@@ -19,8 +19,8 @@
 
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>Registreren</button>
-            <button mat-button>Inloggen</button>
+            <button mat-button [routerLink]="['/register']" routerLinkActive="router-link-active" >Registreren</button>
+            <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" >Inloggen</button>
           </mat-card-actions>
         </mat-card>
       </div>
