@@ -58,6 +58,16 @@ export class RegisterComponent implements OnInit {
     const password: string = this.registerForm.value.password;
     const repeatpassword: string = this.registerForm.value.repeatpassword;
 
+    if (password.length < 8) {
+      this.snackbar.open('Het wachtwoord moet minimaal 8 tekens lang zijn.', 'Sluiten', {duration: 5000});
+      return;
+    }
+
+    if (password !== repeatpassword){
+      this.snackbar.open('Zorg ervoor dat je je wachtwoord goed herhaald.', 'Sluiten', {duration: 5000});
+      return;
+    }
+
     await this.authService.register(username, firstname, lastname, password, this.uploadedImage.toString())
       .then(
         (data) => {
