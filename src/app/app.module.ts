@@ -18,11 +18,12 @@ import { ScrollComponent } from './overview/scroll/scroll.component';
 import { HomeComponent } from './overview/home/home.component';
 import { PostComponent } from './post/post.component';
 import { UserComponent } from './overview/user/user.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './profile/overview/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfilesettingsComponent } from './profile/settings/profilesettings.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { RegisterComponent } from './register/register.component';
     NotFoundComponent,
     ToolbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfilesettingsComponent
   ],
   imports: [
     FlexLayoutModule,

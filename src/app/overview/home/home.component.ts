@@ -4,11 +4,24 @@ import { AuthenticationService } from './../../../services/application/authentic
 import { Post } from './../../../models/Post';
 import { PostService } from './../../../services/application/post/post.service';
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('500ms', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('500ms', style({opacity: 0}))
+      ])
+    ]),
+  ]
 })
 export class HomeComponent implements OnInit {
 

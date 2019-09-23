@@ -12,7 +12,11 @@
     </div>
   </div>
 
-  <div class="post-list" fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="5px">
+  <div *ngIf="profile.profilePosts.length <= 0">
+    {{profile.profileUser.firstname}} {{profile.profileUser.lastname}} heeft nog geen posts gemaakt.
+  </div>
+
+  <div *ngIf="profile.profilePosts.length > 0" class="post-list" fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="5px">
     <mat-card *ngFor="let post of profile.profilePosts" fxFlex="0 1 calc(33.3% - 5px)">
       <mat-card-header>
         <img mat-card-avatar src="{{post.postUser.profilePicture}}">

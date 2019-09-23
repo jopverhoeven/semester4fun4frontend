@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if (password !== repeatpassword){
+    if (password !== repeatpassword) {
       this.snackbar.open('Zorg ervoor dat je je wachtwoord goed herhaald.', 'Sluiten', {duration: 5000});
       return;
     }
