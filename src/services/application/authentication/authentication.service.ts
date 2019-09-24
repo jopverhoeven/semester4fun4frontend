@@ -28,11 +28,11 @@ export class AuthenticationService {
     let authReturnModel: AuthenticationReturnModel;
 
     await this.httpClient.post<AuthenticationReturnModel>(`${this.dbContext.RestURL}auth/login`, submitModel)
-    .pipe(
-      map((data: AuthenticationReturnModel) => authReturnModel = data)
-    ).pipe(
-      catchError(this.handleError)
-    ).toPromise();
+      .pipe(
+        map((data: AuthenticationReturnModel) => authReturnModel = data)
+      ).pipe(
+        catchError(this.handleError)
+      ).toPromise();
 
     return authReturnModel;
   }
@@ -41,11 +41,11 @@ export class AuthenticationService {
     let user: User;
 
     await this.httpClient.post<User>(`${this.dbContext.RestURL}auth/token`, token)
-    .pipe(
-      map((data: User) => user = data)
-    ).pipe(
-      catchError(this.handleError)
-    ).toPromise();
+      .pipe(
+        map((data: User) => user = data)
+      ).pipe(
+        catchError(this.handleError)
+      ).toPromise();
 
     return user;
   }
@@ -62,11 +62,11 @@ export class AuthenticationService {
     let returnModel;
 
     await this.httpClient.post<RegisterReturnModel>(`${this.dbContext.RestURL}auth/register`, submitModel)
-    .pipe(
-      map((data: RegisterReturnModel) => returnModel = data)
-    ).pipe(
-      catchError(this.handleError)
-    ).toPromise();
+      .pipe(
+        map((data: RegisterReturnModel) => returnModel = data)
+      ).pipe(
+        catchError(this.handleError)
+      ).toPromise();
 
     return returnModel;
   }

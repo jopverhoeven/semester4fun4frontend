@@ -1,20 +1,20 @@
-<div *ngIf="!doneLoading">
-
-</div>
-
 <div *ngIf="doneLoading">
-  <div fxLayout="row" fxLayoutAlign="start start">
+  <div fxLayout="row" fxLayoutAlign="start start" fxFlexFill>
     <div fxFlex="20%"></div>
-    <div fxFlex="60%">
-      <div fxFlex="30%">
-        <ul>
-          <li>Algemeen</li>
-          <li>Privacy</li>
-          <li>Profiel Aanpassen</li>
-        </ul>
+    <div fxFlex="60%" fxLayout="row" fxLayoutAlign="start start" class="wrapper">
+      <div fxFlex="30%" class="menu-wrapper">
+        <mat-list>
+          <mat-list-item [routerLink]="['/settings/profile/general']" routerLinkActive="router-link-active">Profiel Bewerken
+          </mat-list-item>
+          <mat-list-item [routerLink]="['/settings/profile/changepassword']" routerLinkActive="router-link-active">Wachtwoord Wijzigen
+          </mat-list-item>
+          <mat-list-item [routerLink]="['/settings/profile/security']" routerLinkActive="router-link-active">Privacy en Beveiliging
+          </mat-list-item>
+          <mat-list-item [routerLink]="['/settings/profile/account']" routerLinkActive="router-link-active" >Accountinstellingen</mat-list-item>
+        </mat-list>
       </div>
-      <div fxFlex="70%">
-        testtest
+      <div style="margin-top: 10px;" fxFlex="70%">
+        <router-outlet style="padding-left: 10px;"></router-outlet>
       </div>
     </div>
 

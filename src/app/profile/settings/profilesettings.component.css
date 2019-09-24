@@ -1,0 +1,14 @@
+.menu-shadow {
+  -webkit-box-shadow: 5px 0px 10px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 0px 10px -7px rgba(0,0,0,0.75);
+  box-shadow: 5px 0px 10px -7px rgba(0,0,0,0.75);}
+
+.wrapper {
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+}
+
+.menu-wrapper {
+  border-right: 1px solid #dbdbdb;
+}

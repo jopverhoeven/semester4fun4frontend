@@ -24,6 +24,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilesettingsComponent } from './profile/settings/profilesettings.component';
+import { ProfileSettingsGeneralComponent } from './profile/settings/profile-settings-general/profile-settings-general.component';
+import { ProfileSettingsChangePasswordComponent } from './profile/settings/profile-settings-change-password/profile-settings-change-password.component';
+import { ProfileSettingsSecurityComponent } from './profile/settings/profile-settings-security/profile-settings-security.component';
+import { ProfileSettingsAccountComponent } from './profile/settings/profile-settings-account/profile-settings-account.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { ProfilesettingsComponent } from './profile/settings/profilesettings.com
     ToolbarComponent,
     LoginComponent,
     RegisterComponent,
-    ProfilesettingsComponent
+    ProfilesettingsComponent,
+    ProfileSettingsGeneralComponent,
+    ProfileSettingsChangePasswordComponent,
+    ProfileSettingsSecurityComponent,
+    ProfileSettingsAccountComponent
   ],
   imports: [
     FlexLayoutModule,
