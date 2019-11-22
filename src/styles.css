@@ -30,8 +30,12 @@ h1 {
     margin: 0;
   }
 
-  router-outlet ~ * {
+  .animation-router ~ *{
     position: absolute;
-    height: 100%;
+    height: calc(100% - 64px);
     width: 100%;
+  }
+
+  .fade-in{
+    transition: 200ms;
   }

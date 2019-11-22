@@ -1,3 +1,6 @@
+import { FollowingComponent } from './profile/following/following.component';
+import { FollowersComponent } from './profile/followers/followers.component';
+import { NewpostComponent } from './newpost/newpost.component';
 import { ProfileSettingsGeneralComponent } from './profile/settings/profile-settings-general/profile-settings-general.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +21,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'post/:id', component: PostComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'profile/:id/followers', component: FollowersComponent},
+  { path: 'profile/:id/following', component: FollowingComponent},
+  { path: 'newpost', component: NewpostComponent},
   {
     path: 'settings/profile',
     component: ProfilesettingsComponent,

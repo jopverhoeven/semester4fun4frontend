@@ -5,9 +5,25 @@
       <div class="profile-image-wrapper">
         <img class="profile-image" src="{{profile.profileUser.profilePicture}}">
       </div>
-      <div class="profile-data">
-        <p class="profile-name">{{profile.profileUser.firstname}} {{profile.profileUser.lastname}}</p>
-        <p class="profile-username">@{{profile.profileUser.username}}</p>
+      <div>
+        <h2>{{profile.profileUser.firstname}} {{profile.profileUser.lastname}}</h2>
+        <p>@{{profile.profileUser.username}} | {{profile.profileStatus}}</p>
+        <div *ngIf="user != null">
+          <button *ngIf="user.userId == profile.profileUser.userId" mat-stroked-button
+            [routerLink]="['/settings/profile']" routerLinkActive="router-link-active">Instellingen</button>
+          <div *ngIf="user.userId != profile.profileUser.userId">
+            <button mat-stroked-button *ngIf="!following" (click)="followUser()">Volgen</button>
+            <button mat-stroked-button *ngIf="following" (click)="followUser()">Ontvolgen</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span>
+          <p style="display: inline;" [routerLink]="['/profile/' + profile.profileUser.username + '/followers']">
+            {{profile.followers.length}} volgers </p>
+          <p style="display: inline;" [routerLink]="['/profile/' + profile.profileUser.username + '/following']">
+            {{profile.following.length}} volgend</p>
+        </span>
       </div>
     </div>
   </div>
@@ -16,32 +32,26 @@
     {{profile.profileUser.firstname}} {{profile.profileUser.lastname}} heeft nog geen posts gemaakt.
   </div>
 
-  <div *ngIf="profile.profilePosts.length > 0" class="post-list" fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="5px">
-    <mat-card *ngFor="let post of profile.profilePosts" fxFlex="0 1 calc(33.3% - 5px)">
+  <div *ngIf="profile.profilePosts.length > 0" fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 20px;">
+    <div [routerLink]="['/post/' + post.postId]" *ngFor="let post of profile.profilePosts" fxFlex="0 1 calc(20%)">
+      <img src="{{post.imageContent}}"
+        matTooltip="{{post.likes.length}} vind ik leuks | {{post.comments.length}} reactie(s) | Gepost op {{post.postDate | date:'short'}}"
+        matTooltipClass="'image-tooltip'"
+        style="height: 250px; width: 250px; object-fit: cover; flex-shrink: 0; margin: 0 auto;">
+    </div>
+  </div>
+
+
+  <!-- <div *ngIf="profile.profilePosts.length > 0" fxLayout="row wrap" fxLayout.lt-sm="column"
+    fxLayoutAlign="space-evenly center" fxLayoutGap="32px">
+    <mat-card *ngFor="let post of profile.profilePosts" fxFlex="0 1 calc(33.3% - 32px)"
+      fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
       <mat-card-header>
         <img mat-card-avatar src="{{post.postUser.profilePicture}}">
         <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
         <mat-card-subtitle>Gepost op {{post.postDate | date:'short'}}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="{{post.imageContent}}" style="object-fit: contain;">
+      <img mat-card-image src="{{post.imageContent}}" style="object-fit:cover; flex-shrink: 0;">
     </mat-card>
-  </div>
-
-
-<!--
-  <div class="post-list">
-    <div class="post-wrapper" *ngFor="let post of profile.profilePosts">
-      <mat-card class="post">
-        <mat-card-header>
-          <img mat-card-avatar src="{{post.postUser.profilePicture}}">
-          <mat-card-title>{{post.postUser.firstname}} {{post.postUser.lastname}}</mat-card-title>
-          <mat-card-subtitle>Gepost op {{post.postDate|date:'short'}}</mat-card-subtitle>
-        </mat-card-header>
-
-        <img class="post-image" mat-card-image src="{{post.imageContent}}">
-      </mat-card>
-    </div>
   </div> -->
-
-
 </div>

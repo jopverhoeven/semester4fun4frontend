@@ -1,3 +1,5 @@
+import { NewPostSubmitModel } from './../../../models/post/new/NewPostSubmitModel';
+import { NewPostReturnModel } from './../../../models/post/new/NewPostReturnModel';
 import { AddCommentSubmitModel } from './../../../models/post/comment/AddCommentSubmitModel';
 import { AddCommentReturnModel } from './../../../models/post/comment/AddCommentReturnModel';
 import { LikePostSubmitModel } from './../../../models/post/likes/LikePostSubmitModel';
@@ -70,6 +72,25 @@ export class PostService {
     let returnModel: AddCommentReturnModel;
 
     await this.httpClient.post<AddCommentReturnModel>(`${this.dbContext.RestURL}post/comment`, submitModel)
+    .pipe(
+      map((data) => returnModel = data)
+    )
+    .pipe(
+      catchError(this.handleError)
+    ).toPromise();
+
+    return returnModel;
+  }
+
+  async newPost(token: string, image: string, description: string): Promise<NewPostReturnModel> {
+    const submitModel: NewPostSubmitModel = new NewPostSubmitModel;
+    submitModel.token = token;
+    submitModel.image = image;
+    submitModel.description = description;
+
+    let returnModel: NewPostReturnModel;
+
+    await this.httpClient.post<NewPostReturnModel>(`${this.dbContext.RestURL}post/add`, submitModel)
     .pipe(
       map((data) => returnModel = data)
     )

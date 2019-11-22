@@ -1,3 +1,5 @@
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ApiError } from './../../models/rest/ApiError';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +7,7 @@ import { AuthenticationService } from './../../services/application/authenticati
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +25,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
   ) { }
 
   ngOnInit() {
@@ -45,7 +48,6 @@ export class RegisterComponent implements OnInit {
 
     reader.onloadend = (e) => {
       this.uploadedImage = reader.result;
-      console.log(reader.result);
     };
 
     reader.readAsDataURL(file);
@@ -59,51 +61,51 @@ export class RegisterComponent implements OnInit {
     const repeatpassword: string = this.registerForm.value.repeatpassword;
 
     if (password.length < 8) {
-      this.snackbar.open('Het wachtwoord moet minimaal 8 tekens lang zijn.', 'Sluiten', {duration: 5000});
+      this.snackbar.open('Het wachtwoord moet minimaal 8 tekens lang zijn.', 'Sluiten', { duration: 5000 });
       return;
     }
 
     if (password !== repeatpassword) {
-      this.snackbar.open('Zorg ervoor dat je je wachtwoord goed herhaald.', 'Sluiten', {duration: 5000});
+      this.snackbar.open('Zorg ervoor dat je je wachtwoord goed herhaald.', 'Sluiten', { duration: 5000 });
+      return;
+    }
+
+    if (this.uploadedImage == null || this.uploadedImage === undefined) {
+      this.snackbar.open('Je hebt geen profielfoto ingesteld.', 'Sluiten', {duration: 5000});
       return;
     }
 
     await this.authService.register(username, firstname, lastname, password, this.uploadedImage.toString())
       .then(
         (data) => {
-          this.snackbar.open('U bent succesvol geregistreerd', 'Sluiten', {duration: 5000});
+          this.snackbar.open('U bent succesvol geregistreerd', 'Sluiten', { duration: 5000 });
           this.router.navigateByUrl('login');
         }
       )
       .catch(
         (error: ApiError) => {
-          this.snackbar.open(error.clientMessage, 'Sluiten', {duration: 3000});
+          this.snackbar.open(error.clientMessage, 'Sluiten', { duration: 3000 });
         }
       );
   }
 
   get username() {
     return this.registerForm.get('username');
-
   }
 
   get firstname() {
     return this.registerForm.get('firstname');
-
   }
 
   get lastname() {
     return this.registerForm.get('lastname');
-
   }
 
   get password() {
     return this.registerForm.get('password');
-
   }
 
   get repeatpassword() {
     return this.registerForm.get('repeatpassword');
   }
-
 }

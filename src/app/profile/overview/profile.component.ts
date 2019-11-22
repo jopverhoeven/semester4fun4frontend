@@ -1,3 +1,4 @@
+import { TokenService } from './../../../services/cookies/token.service';
 import { ApiError } from './../../../models/rest/ApiError';
 import { User } from './../../../models/User';
 import { CookieService } from 'ngx-cookie-service';
@@ -18,13 +19,13 @@ export class ProfileComponent implements OnInit {
   profile: Profile;
   doneLoading = false;
   user: User;
+  following = false;
 
   constructor(
     private profileService: ProfileService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthenticationService,
-    private cookieService: CookieService,
+    private tokenService: TokenService,
     private matSnackBar: MatSnackBar,
   ) { }
 
@@ -34,6 +35,8 @@ export class ProfileComponent implements OnInit {
 
     await this.getProfile(username);
     await this.getUser();
+
+    this.checkIfFollowing();
 
     this.doneLoading = true;
   }
@@ -46,17 +49,44 @@ export class ProfileComponent implements OnInit {
       .catch(
         (error: ApiError) => {
           console.log(error);
-          this.matSnackBar.open(error.clientMessage, 'Sluiten', {duration: 5000});
+          this.matSnackBar.open(error.clientMessage, 'Sluiten', { duration: 5000 });
           this.router.navigateByUrl('/404');
         }
       );
   }
 
   async getUser() {
-    if (this.cookieService.check('token')) {
-      const token = this.cookieService.get('token');
-      await this.authService.loginWithToken(token)
-        .then((data) => this.user = data);
+    await this.tokenService.getUserFromToken()
+      .then(
+        (data) => {
+          this.user = data;
+        }
+      );
+  }
+
+  async followUser() {
+    const token = this.tokenService.getLoginToken();
+    const profileId = this.profile.profileId;
+
+    if (token == null) { return; }
+
+    await this.profileService.followProfile(token, profileId)
+      .then(
+        (data) => {
+          this.following = data.following;
+        }
+      );
+
+    await this.getProfile(this.route.snapshot.paramMap.get('id'));
+  }
+
+  checkIfFollowing() {
+    if (this.user != null) {
+      this.profile.followers.forEach(followUser => {
+        if (this.user.userId === followUser.userId) {
+          this.following = true;
+        }
+      });
     }
   }
 

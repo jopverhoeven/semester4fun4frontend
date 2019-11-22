@@ -1,3 +1,6 @@
+import { TokenService } from './../../../services/cookies/token.service';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from './../../../services/application/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +12,13 @@ export class ProfilesettingsComponent implements OnInit {
 
   doneLoading = false;
 
-  constructor() { }
+  constructor(
+    private authService: AuthenticationService,
+    private tokenService: TokenService,
+  ) { }
 
   async ngOnInit() {
-
+    this.tokenService.redirectIfNoToken();
 
     this.doneLoading = true;
   }

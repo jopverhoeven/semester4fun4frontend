@@ -25,9 +25,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfilesettingsComponent } from './profile/settings/profilesettings.component';
 import { ProfileSettingsGeneralComponent } from './profile/settings/profile-settings-general/profile-settings-general.component';
+// tslint:disable-next-line: max-line-length
 import { ProfileSettingsChangePasswordComponent } from './profile/settings/profile-settings-change-password/profile-settings-change-password.component';
 import { ProfileSettingsSecurityComponent } from './profile/settings/profile-settings-security/profile-settings-security.component';
 import { ProfileSettingsAccountComponent } from './profile/settings/profile-settings-account/profile-settings-account.component';
+import { NewpostComponent } from './newpost/newpost.component';
+import { FollowingComponent } from './profile/following/following.component';
+import { FollowersComponent } from './profile/followers/followers.component';
 
 
 @NgModule({
@@ -47,7 +51,10 @@ import { ProfileSettingsAccountComponent } from './profile/settings/profile-sett
     ProfileSettingsGeneralComponent,
     ProfileSettingsChangePasswordComponent,
     ProfileSettingsSecurityComponent,
-    ProfileSettingsAccountComponent
+    ProfileSettingsAccountComponent,
+    NewpostComponent,
+    FollowingComponent,
+    FollowersComponent
   ],
   imports: [
     FlexLayoutModule,

@@ -1,0 +1,13 @@
+<div *ngIf="doneLoading">
+  <button mat-stroked-button [routerLink]="['/profile/'+profile.profileUser.username]"
+    routerLinkActive="router-link-active">Terug naar profiel</button>
+  <h1>Volgend</h1>
+  <p *ngIf="profile.following.length <= 0">{{profile.profileUser.firstname}} {{profile.profileUser.lastname}} volgt nog
+    niemand.</p>
+  <mat-card *ngFor="let user of profile.following">
+    <mat-card-header [routerLink]="['/profile/'+user.username]">
+      <img mat-card-avatar src="{{user.profilePicture}}">
+      <mat-card-title>{{user.firstname}} {{user.lastname}}</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>

@@ -1,5 +1,5 @@
 <div *ngIf="doneLoading">
-  <div fxLayout="row" fxLayoutAlign="start start" fxFlexFill>
+  <div fxLayout="row" fxLayoutAlign="center center">
     <div fxFlex="20%"></div>
     <div fxFlex="60%" fxLayout="row" fxLayoutAlign="start start" class="wrapper">
       <div fxFlex="30%" class="menu-wrapper">
@@ -13,11 +13,10 @@
           <mat-list-item [routerLink]="['/settings/profile/account']" routerLinkActive="router-link-active" >Accountinstellingen</mat-list-item>
         </mat-list>
       </div>
-      <div style="margin-top: 10px;" fxFlex="70%">
-        <router-outlet style="padding-left: 10px;"></router-outlet>
+      <div style="height: 500px; padding-left: 10px; border-left: 1px solid #dbdbdb;" fxFlex="70%">
+        <router-outlet></router-outlet>
       </div>
     </div>
-
+    <div fxFlex="20%"></div>
   </div>
-  <div fxFlex="20%"></div>
 </div>

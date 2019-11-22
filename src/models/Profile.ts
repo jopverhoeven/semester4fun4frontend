@@ -8,4 +8,5 @@ export class Profile {
   following: User[];
   profilePosts: Post[];
   profilePrivacy: Privacy;
+  profileStatus: string;
 }

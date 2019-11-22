@@ -1,3 +1,4 @@
+import { TokenService } from './../../services/cookies/token.service';
 import { Router } from '@angular/router';
 import { ApiError } from './../../models/rest/ApiError';
 import { AuthenticationService } from './../../services/application/authentication/authentication.service';
@@ -20,7 +21,7 @@ export class ToolbarComponent implements OnInit {
     private cookieService: CookieService,
     private authService: AuthenticationService,
     private snackbar: MatSnackBar,
-    private router: Router,
+    private tokenService: TokenService,
   ) { }
 
   async ngOnInit() {
@@ -42,12 +43,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   logOut() {
-    window.onbeforeunload = (ev) => {
-      this.cookieService.delete('token');
-    };
-
+    this.tokenService.removeToken();
     window.location.reload();
-
   }
 
 }

@@ -1,0 +1,25 @@
+<div fxLayout="row" fxLayoutAlign="start start" style="margin-top: 10px;" *ngIf="doneLoading">
+  <div fxFlex="30%"></div>
+  <mat-card fxFlex="40%">
+    <mat-card-header>
+      <mat-card-title>Nieuwe post delen</mat-card-title>
+      <mat-card-subtitle>Upload een afbeelding en voeg eventueel een beschrijving toe.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-image *ngIf="!uploadedImage" src="../../assets/photo-camera-icon-01-.jpg">
+      <img mat-card-image *ngIf="uploadedImage" src="{{uploadedImage}}">
+      <input style="display: none;" type="file" accept="image/*" (change)="onFileChange($event)" #fileInput>
+      <button mat-button (click)="fileInput.click()">Selecteer afbeelding</button>
+    </mat-card-content>
+    <mat-card-content>
+      <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input matInput type="text" formControlName="postdescription" placeholder="Beschrijving...">
+        </mat-form-field>
+        <br>
+        <button mat-button type="submit" [disabled]="!newPostForm.valid">Delen</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <div fxFlex="30%"></div>
+</div>

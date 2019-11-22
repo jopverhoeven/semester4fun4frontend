@@ -37,3 +37,36 @@
   font-size: 15px;
   color: gray;
 }
+
+.post-image-container:hover .image {
+  opacity: 0.3;
+}
+
+.post-image-container:hover .post-image-overlay {
+  opacity: 1;
+}
+
+.post-image {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.post-image-overlay {
+  transition: .5s ease;
+  opacity: 0;
+  top: 0;
+
+  text-align: center;
+}
+
+.post-image-overlay-text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.image-tooltip  {
+  width: 10px;
+}

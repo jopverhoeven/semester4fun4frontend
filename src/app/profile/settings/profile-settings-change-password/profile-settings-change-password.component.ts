@@ -1,3 +1,4 @@
+import { TokenService } from './../../../../services/cookies/token.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileSettingsChangePasswordComponent implements OnInit {
 
-  constructor() { }
+  doneLoading = false;
+
+  constructor(
+    private tokenService: TokenService,
+  ) { }
 
   ngOnInit() {
+    this.tokenService.redirectIfNoToken();
+
+    this.doneLoading = true;
   }
 
 }

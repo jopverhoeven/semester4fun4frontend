@@ -9,6 +9,12 @@
   border: 1px solid #dbdbdb;
 }
 
-.menu-wrapper {
+/* .menu-wrapper {
   border-right: 1px solid #dbdbdb;
+  height: 100%;
+} */
+
+.router-link-active {
+  border-left: 2px solid black;
+  font-weight: bold;
 }

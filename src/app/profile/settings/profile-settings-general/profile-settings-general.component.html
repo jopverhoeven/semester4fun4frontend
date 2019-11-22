@@ -1,3 +1,22 @@
-<p>
-  profile-settings-general works!
-</p>
+<h2>Profiel Bewerken</h2>
+
+<h3>Status</h3>
+<form *ngIf="doneLoading" class="form">
+  <mat-form-field class="form-field">
+    <input matInput type="text" placeholder="Status">
+  </mat-form-field>
+  <button mat-stroked-button>Toepassen</button>
+</form>
+<mat-divider style="margin-right: 10px; margin-top: 5px;"></mat-divider>
+<h3>Voor- en Achternaam</h3>
+<form [formGroup]="updateForm" class="form" *ngIf="doneLoading" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form-field">
+    <input formControlName="firstname" matInput type="text" placeholder="Voornaam" value="{{user.firstname}}">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <input formControlName="lastname" matInput type="text" placeholder="Achternaam" value="{{user.lastname}}">
+  </mat-form-field>
+
+  <button mat-stroked-button type="submit">Toepassen</button>
+</form>
+
