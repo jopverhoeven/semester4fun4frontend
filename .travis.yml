@@ -21,7 +21,7 @@ script:
   - ng lint
   # - ng test --watch=false
   - ng build --prod
-  - cd /dist/semester4fun4frontend
+  - cd /dist/
   - cp index.html 404.html
 
 
@@ -30,5 +30,5 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  local-dir: ./dist/semester4fun4frontend
+  local-dir: ./dist/
   on:
