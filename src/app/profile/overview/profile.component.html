@@ -1,5 +1,8 @@
-<div *ngIf="!doneLoading"></div>
-<div *ngIf="doneLoading">
+<div *ngIf="!doneLoading">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <img src="assets/loading.gif">
+  </div>
+</div><div *ngIf="doneLoading">
   <div class="header">
     <div class="header-wrapper">
       <div class="profile-image-wrapper">

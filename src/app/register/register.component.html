@@ -6,7 +6,7 @@
       <mat-card-subtitle>Wij waarborgen uw privacy. Uw wachtwoorden worden versleuteld opgeslagen</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <img mat-card-image *ngIf="!uploadedImage" src="../../assets/photo-camera-icon-01-.jpg">
+      <img mat-card-image *ngIf="!uploadedImage" src="assets/photo-camera-icon-01-.jpg">
       <img mat-card-image *ngIf="uploadedImage" src="{{uploadedImage}}">
       <input style="display: none;" type="file" accept="image/*" (change)="onFileChange($event)" #fileInput>
       <button mat-button (click)="fileInput.click()">Upload profielfoto</button>

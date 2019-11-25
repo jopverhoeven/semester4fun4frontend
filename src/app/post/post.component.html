@@ -1,5 +1,8 @@
-<div *ngIf="!doneLoading"></div>
-
+<div *ngIf="!doneLoading">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <img src="assets/loading.gif">
+  </div>
+</div>
 <div *ngIf="doneLoading" class="post-wrapper">
 
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="5px" style="margin-top: 20px;">
