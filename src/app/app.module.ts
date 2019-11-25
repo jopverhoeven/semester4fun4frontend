@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { OverviewpostComponent } from './overview/post/overviewpost.component';
 import { ScrollComponent } from './overview/scroll/scroll.component';
@@ -65,6 +65,7 @@ import { FollowersComponent } from './profile/followers/followers.component';
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
+    HttpClient,
     HttpClientModule,
   ],
   providers: [HttpClientModule, CookieService/*, {provide: LocationStrategy, useClass: HashLocationStrategy}*/],

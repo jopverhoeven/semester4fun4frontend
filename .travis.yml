@@ -19,10 +19,8 @@ cache:
 
 script:
   - ng lint
-  # - ng test --watch=false
+  - ng test --watch=false
   - ng build --prod
-  - cd ./dist/products/
-  - cp index.html 404.html
 
 
 deploy:

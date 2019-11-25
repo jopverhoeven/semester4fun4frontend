@@ -33,8 +33,8 @@ export class ProfileSettingsGeneralComponent implements OnInit {
       );
 
     this.updateForm = this.formBuilder.group({
-      firstname: [this.user.firstname, Validators.required],
-      lastname: [this.user.lastname, Validators.required]
+      // firstname: [this.user.firstname, Validators.required],
+      // lastname: [this.user.lastname, Validators.required]
     });
 
     this.doneLoading = true;

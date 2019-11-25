@@ -1,6 +1,13 @@
+import { OverviewpostComponent } from './../../../overview/post/overviewpost.component';
+import { HomeComponent } from './../../../overview/home/home.component';
+import { MaterialModule } from './../../../material/material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileSettingsAccountComponent } from './profile-settings-account.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CookieService } from 'ngx-cookie-service';
+import { FormBuilder } from '@angular/forms';
 
 describe('ProfileSettingsAccountComponent', () => {
   let component: ProfileSettingsAccountComponent;
@@ -8,7 +15,10 @@ describe('ProfileSettingsAccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileSettingsAccountComponent ]
+
+      imports: [MaterialModule, RouterTestingModule.withRoutes([{path: 'home', component: HomeComponent}]), HttpClientTestingModule ],
+      providers: [ CookieService, FormBuilder ],
+      declarations: [ ProfileSettingsAccountComponent, HomeComponent, OverviewpostComponent ]
     })
     .compileComponents();
   }));

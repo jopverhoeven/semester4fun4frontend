@@ -15,7 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class OverviewpostComponent implements OnInit {
 
-  @Input() post: Post;
+  @Input() post?: Post;
 
   userLiked = false;
 
