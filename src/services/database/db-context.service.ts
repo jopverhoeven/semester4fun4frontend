@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DbContextService {
 
-  public RestURL: String = 'http://145.93.112.40:8090/';
+  public RestURL: String = 'https://192.168.2.5:8090/';
   // public AuthenticationURL: String = 'http://localhost:8091/';
 
   constructor() { }
