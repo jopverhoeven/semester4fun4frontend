@@ -16,6 +16,7 @@ describe('ProfileSettingsSecurityComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MaterialModule, RouterTestingModule.withRoutes([{path: 'home', component: HomeComponent}]), HttpClientTestingModule ],
+      // tslint:disable-next-line: max-line-length
       providers: [ CookieService, FormBuilder ],      declarations: [ ProfileSettingsSecurityComponent, HomeComponent, OverviewpostComponent ]
     })
     .compileComponents();

@@ -17,6 +17,7 @@ describe('ProfileSettingsGeneralComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      // tslint:disable-next-line: max-line-length
       imports: [MaterialModule, RouterTestingModule.withRoutes([{path: 'home', component: HomeComponent}]), HttpClientTestingModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule ],
       providers: [ CookieService, FormBuilder ],
       declarations: [ ProfileSettingsGeneralComponent, HomeComponent, OverviewpostComponent ]

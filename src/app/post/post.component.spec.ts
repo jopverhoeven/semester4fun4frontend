@@ -17,6 +17,7 @@ describe('PostComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
 
+      // tslint:disable-next-line: max-line-length
       imports: [MaterialModule, RouterTestingModule.withRoutes([{path: 'home', component: HomeComponent}]), HttpClientTestingModule, ReactiveFormsModule, BrowserAnimationsModule ],
       providers: [ CookieService, FormBuilder ],
       declarations: [ PostComponent, HomeComponent, OverviewpostComponent ]

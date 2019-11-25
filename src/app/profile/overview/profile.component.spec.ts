@@ -18,7 +18,7 @@ describe('ProfileComponent', () => {
 
       imports: [MaterialModule, RouterTestingModule.withRoutes([{path: 'home', component: HomeComponent}]), HttpClientTestingModule ],
       providers: [ CookieService, FormBuilder ],
-      declarations: [ ProfileComponent,HomeComponent, OverviewpostComponent ]
+      declarations: [ ProfileComponent, HomeComponent, OverviewpostComponent ]
     })
     .compileComponents();
   }));
