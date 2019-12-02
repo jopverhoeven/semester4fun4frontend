@@ -21,6 +21,7 @@ script:
   - ng lint
   - ng test --watch=false
   - ng build --prod
+  - cp index.html 404.html
 
 
 deploy:
