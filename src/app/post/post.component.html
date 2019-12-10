@@ -26,14 +26,18 @@
 
 
       <mat-card-actions>
-        <button mat-button (click)="likePost()">
-          Vind ik leuk
-        </button>
+          <button mat-button *ngIf="!userLiked" (click)="likePost()">Vind ik leuk</button>
+          <button mat-button *ngIf="userLiked" (click)="likePost()">Vind ik niet meer leuk</button>
       </mat-card-actions>
     </mat-card>
 
     <mat-card fxFlex="25%" gdAreas="side content" style="top: 80px; position: sticky;">
-      <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>
+          Reacties
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="isUser">
         <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
           <mat-form-field>
             <input matInput type="text" formControlName="comment" placeholder="Laat een comment achter." required>

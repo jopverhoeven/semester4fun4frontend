@@ -1,3 +1,4 @@
+import { TokenService } from './../../services/cookies/token.service';
 import { AddCommentReturnModel } from './../../models/post/comment/AddCommentReturnModel';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ApiError } from './../../models/rest/ApiError';
@@ -22,8 +23,10 @@ export class PostComponent implements OnInit {
   userLiked = false;
   doneLoading = false;
   commentForm: FormGroup;
+  isUser = false;
 
   constructor(
+    private tokenService: TokenService,
     private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
@@ -34,6 +37,9 @@ export class PostComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+
+
+    this.isUser = this.tokenService.hasLoginToken();
 
     this.commentForm = this.formBuilder.group({
       comment: ['', Validators.required]

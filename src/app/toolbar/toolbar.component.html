@@ -1,7 +1,7 @@
 <mat-toolbar class="toolbar">
   <div class="toolbar-inner-wrapper">
 
-    <span [routerLink]="['/home']" routerLinkActive="router-link-active" class="toolbar-logo">
+    <span matTooltip="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" class="toolbar-logo">
       <h1>FonstaGram</h1>
     </span>
 
@@ -11,12 +11,12 @@
         <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Inloggen</button>
       </div>
       <div *ngIf="user != null">
-        <img style="height: 40px; width: 40px; object-fit: cover; flex-shrink: 0; border-radius: 50%;"
-          src="{{user.profilePicture}}" />
-        <button mat-button [routerLink]="['/profile/'+user.username]"
+        <!-- <img style="height: 40px; width: 40px; object-fit: cover; flex-shrink: 0; border-radius: 50%; padding-top: -20px"
+          src="{{user.profilePicture}}" /> -->
+        <button mat-button matTooltip="Profiel" [routerLink]="['/profile/'+user.username]"
           routerLinkActive="router-link-active">{{user.firstname}} {{user.lastname}}</button>
-        <button mat-icon-button [routerLink]="['/newpost']"><i class="material-icons">add</i></button>
-        <button mat-icon-button [matMenuTriggerFor]="menu"><i class="material-icons">more_horiz</i></button>
+        <button mat-icon-button matTooltip="Post delen" [routerLink]="['/newpost']"><i class="material-icons">add</i></button>
+        <button mat-icon-button matTooltip="Menu" [matMenuTriggerFor]="menu"><i class="material-icons">more_horiz</i></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/profile/'+user.username]" routerLinkActive="router-link-active">
             <i class="material-icons">person</i>Profiel

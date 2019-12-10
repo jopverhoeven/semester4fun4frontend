@@ -11,11 +11,14 @@
       </mat-card-content>
       <img mat-card-image src="{{post.imageContent}}">
       <mat-card-content>
+
         <p><span [class.liked]="userLiked">{{post.likes.length}} vind ik leuks</span> | {{post.comments.length}} reactie(s)</p>
       </mat-card-content>
     </div>
     <mat-card-actions>
-      <button mat-button (click)="likePost()">Vind ik leuk</button>
+      <button mat-button *ngIf="!userLiked" (click)="likePost()">Vind ik leuk</button>
+      <button mat-button *ngIf="userLiked" (click)="likePost()">Vind ik niet meer leuk</button>
+
       <button mat-button [routerLink]="['/post/'+post.postId]" routerLinkActive="router-link-active">Reageren</button>
     </mat-card-actions>
   </mat-card>

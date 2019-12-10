@@ -46,7 +46,7 @@ export class TokenService {
     return null;
   }
 
-  private hasLoginToken(): boolean {
+  public hasLoginToken(): boolean {
     return this.cookieService.check('token');
   }
 
