@@ -44,7 +44,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "baseHref": "https://jopverhoeven.github.io/semester4fun4frontend/"
+              "baseHref": "http://fonstagram.jopverhoeven.nl/"
             }
           }
         },
