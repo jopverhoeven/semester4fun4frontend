@@ -34,4 +34,41 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.loginForm.valid).toBeFalsy();
+  });
+
+  it('password field validity', () => {
+    const password = component.loginForm.controls['password'];
+    expect(password.valid).toBeFalsy();
+
+    let errors = {};
+    errors = password.errors || {};
+    expect(errors['required']).toBeTruthy();
+
+    password.setValue('pass');
+    errors = password.errors || {};
+    expect(errors['minlength']).toBeTruthy();
+  });
+
+  it('username field validity', () => {
+    const username = component.loginForm.controls['username'];
+    expect(username.valid).toBeFalsy();
+
+    let errors = {};
+    errors = username.errors || {};
+    expect(errors['required']).toBeTruthy();
+
+    username.setValue('12');
+    errors = username.errors || {};
+    expect(errors['minlength']).toBeTruthy();
+  });
+
+  it('correctly filling in form', () => {
+    expect(component.loginForm.valid).toBeFalsy();
+    component.loginForm.controls['username'].setValue('username');
+    component.loginForm.controls['password'].setValue('sufficientpassword');
+    expect(component.loginForm.valid).toBeTruthy();
+  });
 });

@@ -5,6 +5,7 @@
 ### Angular ###
 ## Angular ##
 # compiled output
+/.scannerwork
 /dist
 /tmp
 /app/**/*.js

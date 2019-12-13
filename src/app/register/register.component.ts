@@ -30,11 +30,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [
+        Validators.required,
+        Validators.minLength(3)]],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      password: ['', Validators.required],
-      repeatpassword: ['', Validators.required]
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8)]],
+      repeatpassword: ['', [
+        Validators.required,
+        Validators.minLength(8)]]
     });
 
     if (this.cookieService.check('token')) {
