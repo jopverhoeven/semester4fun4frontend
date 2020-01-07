@@ -6,7 +6,6 @@
 ## Angular ##
 # compiled output
 /.scannerwork
-/dist
 /tmp
 /app/**/*.js
 /app/**/*.js.map
