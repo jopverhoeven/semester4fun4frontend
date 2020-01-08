@@ -124,6 +124,8 @@ THE SOFTWARE.
 
 @angular/material/list
 
+@angular/material/menu
+
 @angular/material/sidenav
 
 @angular/material/snack-bar
